@@ -27,7 +27,7 @@ Java面试需要准备的知识点，整理的不是那么全面，后续会一�
 
 ### 设计模式的设计原则
 
- - [Java基础]()
+ - [Java基础](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/JavaFoundation.md)
  
  - [里氏替换原则](#里氏替换原则)
  
