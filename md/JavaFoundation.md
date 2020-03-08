@@ -1,6 +1,6 @@
 # Java基础
 
- - [public、protected、default、private](#java关键字作用域)
+ - [public、protected、default、private关键字作用域](#java关键字作用域)
  
  - [依赖倒置原则](#依赖倒置原则)
  
