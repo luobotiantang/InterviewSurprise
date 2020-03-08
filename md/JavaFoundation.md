@@ -8,7 +8,7 @@
  
  - [StringBuilder和StringBuffer的区别](#StringBuilder和StringBuffer的区别)
  
- - [开闭原则](#开闭原则)
+ - [==和equals的区别](#==和equals的区别)
  
  ### java关键字作用域
  
@@ -58,9 +58,11 @@
      不同点：StringBuilder是线程不安全的，适用于单线程下在字符缓冲区进行大量操作的情况；StringBuffer是线程安全的适用于在多线
             程对字符缓冲区进行大量操作的情况。
             
- ### 迪米特法则
-     Law of Demeter,简称LoD
-     最少知识原则，即一个对象应当对其他对象尽可能少的了解。
+ ### ==和equals的区别
+ 
+     ==:基本数据类型比较的是值；引用数据类型比较的是内存地址
+     equals:类没有复写equals()方法，等价于==比较的是内存地址；复写equals方法比较的是对象的内容；
+     
  ### 开闭原则
      Open-Closed Principle,简称OCP
      对扩展开放，对修改关闭
