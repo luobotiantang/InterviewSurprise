@@ -11,10 +11,14 @@
  - [开闭原则](#开闭原则)
  
  ### java关键字作用域
-     Single ResponsibilityPrinciple，简称SRP
-     英文原意：There should never be more than one reason for a class to change.
-     意思：一个类应该只有一个引起它变化的原因；即一个类应该只有一个职责。
-     注：只是利用极端的表述方式重点强调，并不是极端的要求我们只能为类定义一个职责。
+ 
+     注：(1：支持；0：不支持)
+                当前类     同一包     子孙类     其他包
+     public       1         1         1         1
+     protected    1         1         1         0
+     default      1         1         0         0
+     private      1         0         0         0
+     
  ### 里氏替换原则
      Liskov SubstitutionPrinciple，简称LSP
      可以理解为继承的关系
