@@ -6,7 +6,7 @@
  
  - [IO字节流和字符流](#IO字节流和字符流)
  
- - [迪米特法则](#迪米特法则)
+ - [StringBuilder和StringBuffer的区别](#StringBuilder和StringBuffer的区别)
  
  - [开闭原则](#开闭原则)
  
@@ -52,9 +52,12 @@
         3、字节流通常用于处理二进制数据，实际上它可以处理任意类型的数据，但它不支持直接写入或读取Unicode码元；字符流通常处理文
            本数据，它支持写入及读取Unicode码元。
            
- ### 接口隔离原则
-     Interface Segregation Principle,简称ISP
-     类与类之间的依赖应当建立在最小的接口上
+ ### StringBuilder和StringBuffer的区别
+ 
+     相同点：StringBuilder和StringBuffer都是字符串可变的；
+     不同点：StringBuilder是线程不安全的，适用于单线程下在字符缓冲区进行大量操作的情况；StringBuffer是线程安全的适用于在多线
+            程对字符缓冲区进行大量操作的情况。
+            
  ### 迪米特法则
      Law of Demeter,简称LoD
      最少知识原则，即一个对象应当对其他对象尽可能少的了解。
