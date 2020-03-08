@@ -2,7 +2,7 @@
 
  - [public、protected、default、private关键字作用域](#java关键字作用域)
  
- - [依赖倒置原则](#依赖倒置原则)
+ - [如何通过反射拿到private的属性和方法](#如何通过反射拿到private的属性和方法)
  
  - [接口隔离原则](#接口隔离原则)
  
@@ -19,9 +19,28 @@
      default      1         1         0         0
      private      1         0         0         0
      
- ### 里氏替换原则
-     Liskov SubstitutionPrinciple，简称LSP
-     可以理解为继承的关系
+ ### 如何通过反射拿到private的属性和方法
+     AccessibleObject类是field、method和constructor对象的基类。它提供了将反射的对象标记为在使用时取消默认java语言访问的检测能力。对
+     于公共成员、默认打包访问成员、受保护成员和私有成员在分别使用field、method和constructor对象来设置或获得字段、调用方法、或者创建和初
+     始化类的新实例的时候，会执行访问检测。当反射对象的accessible标志设为true时则表示反射的对象在使用时应该取消java语言的访问检查，反之
+     则检查。由于jdk的安全检查耗时比较多，所以通过setAccessible(true)的方式关闭安全检查来提升反射速度。
+     例如：
+     
+     Person person = new Person();
+     Class<?> personName = person.getClass();
+     Field field = personName.getDeclaredField("name");
+     field.setAccessible(true);
+     field.set(person,"Dog");
+     System.out.println("Hello: "+field .get(person));
+     
+     class Person{
+        private String name;
+        public person(){}
+        public String getName(){
+            return name;
+        }
+     }
+        
  ### 依赖倒置原则
      Dependence Inversion Principle,简称DIP
      1、高层模块不应该依赖底层模块，两者都应该依赖其抽象
