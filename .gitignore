@@ -1,0 +1,20 @@
+#some local files
+README.md
+*/.DS_Store
+target/
+gulpfile.js
+package-lock.json
+package.json
+upload/
+*.log
+
+# IntelliJ IDEA Project files
+.idea/
+*/.idea/
+*.iml
+*/.iml
+
+# Eclipse Project files
+.classpath
+.project
+.settings/
