@@ -63,9 +63,6 @@
      ==:基本数据类型比较的是值；引用数据类型比较的是内存地址
      equals:类没有复写equals()方法，等价于==比较的是内存地址；复写equals方法比较的是对象的内容；
      
- ### 开闭原则
-     Open-Closed Principle,简称OCP
-     对扩展开放，对修改关闭
 
 
 > reubenwang@163.com

@@ -28,7 +28,10 @@ Java面试需要准备的知识点，整理的不是那么全面，后续会一�
 ### 面试准备点
 
  - [Java基础](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/JavaFoundation.md)
-
+ 
+ - [MyBatis相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/MyBatis.md)
+ 
+ 
 
 
 ### 联系
