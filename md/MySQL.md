@@ -6,6 +6,7 @@
  ### 索引
  
      创建联合索引：create index name_index on employee (employee_name,employee_age);
+     
      索引什么情况下会生效、失效：
                            索引生效：当创建索引字段在查询或者表关联的时候就会生效，可以用explain执行计划来查看。
                                     如：explain select * from a;
