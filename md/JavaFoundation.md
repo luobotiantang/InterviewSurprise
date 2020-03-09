@@ -14,6 +14,8 @@
  
  - [泛型被擦出](#泛型被擦出)
  
+ - [单例模式](#单例模式)
+ 
  ### java关键字作用域
  
      注：(1：支持；0：不支持)
@@ -77,11 +79,35 @@
                     2、自定义第三方类库的某些方法。
  
  ### 泛型被擦出
+ 
      泛型在编译的时候就被擦除
      虚拟机中没有泛型类型的对象，所有对象都是普通的类，无论我们在什么时候定义泛型类型，在虚拟机中都自动转换成了一个相应的原始类型
      ，原始类型就是擦除类型变量。
      泛型被擦除的规则：
         泛型擦除就是类型变量用第一个限定来替换，如果没有限定就用Object替换。    
+
+ ### 单例模式
+ 
+     双重检查所的懒加载机制
+     public class SingleTon{
+        private static volitale SingleTon singleTon;
+        public void SingleTon(){}
+        public static SingleTon getInstance(){
+            if(singleTon==null){
+                synchronized(SingleTon.class){
+                    if(singleTon==null){
+                        //singleTon用volitale修饰是为了防止指令重排，如果不加volitale那么2，3将会指令重排导致对象还没初始化
+                          就分配内存空间。
+                        //1、分配内存空间
+                        //2、对象初始化
+                        //3、为初始化对象分配内存空间
+                        singleTon = new SingleTon();
+                    }
+                }
+            }
+            return singleTon;
+        }
+     }
 
 > reubenwang@163.com
 > 没事别找我，找我也不在！--我很忙🦆
