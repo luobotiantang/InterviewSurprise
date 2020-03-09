@@ -96,8 +96,8 @@
             if(singleTon==null){
                 synchronized(SingleTon.class){
                     if(singleTon==null){
-                        //singleTon用volitale修饰是为了防止指令重排，如果不加volitale那么2，3将会指令重排导致对象还没初始化
-                          就分配内存空间。
+                        //singleTon用volitale修饰是为了防止指令重排，如果不加volitale那么2，3将会指令重排导致对象还没
+                          初始化就分配内存空间。
                         //1、分配内存空间
                         //2、对象初始化
                         //3、为初始化对象分配内存空间
