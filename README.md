@@ -31,6 +31,8 @@ Java面试需要准备的知识点，整理的不是那么全面，后续会一�
  
  - [JVM相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/JVM.md)
  
+ - [Redis相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Redis.md)
+ 
  - [MyBatis相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/MyBatis.md)
  
  - [Hibernate相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Hibernate.md)
