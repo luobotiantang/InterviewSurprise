@@ -4,6 +4,8 @@
  
  - [Spring装载Bean的方式](#Spring装载Bean的方式)
  
+ - [Spring中bean的加载及获取](#Spring中bean的加载及获取)
+ 
  
  ### Spring的两种代理JDK和CGLIB
  
@@ -21,7 +23,11 @@
         如果我们要使用名称装配可以结合@Qualifier注解进行使用
         如：@Autowired() @Qualifier("baseDao")
            private BaseDao baseDao;
-        
+ 
+ ### Spring中bean的加载及获取
+     
+     从xml读取bean的配置信息加载到Spring容器中，通过xml配置的id从Spring容器反射得到这个类的实例对象。将
+     bean存储到BeanDefinitionMap中，然后从BeanDefinitionMap获取bean;       
 
 > reubenwang@163.com
 > 没事别找我，找我也不在！--我很忙🦆
