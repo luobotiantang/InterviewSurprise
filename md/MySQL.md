@@ -63,8 +63,8 @@
  
  ### 查询有2门及以上不及格科目的学生姓名及其平均成绩
  
-     select sname,avg(grade) from s,sc
-     where s.s#=sc.s# and grade<60 group by sname having by count(grade)>=2;       
+     select s.sname,avg(sc.grade) from s,sc
+     where s.s#=sc.s# and sc.grade<60 group by s.sname having by count(sc.grade)>=2;       
      
 > reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆
