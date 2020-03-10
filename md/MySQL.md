@@ -59,5 +59,5 @@
      4、InnoDB支持MVCC(多版本并发控制)，MyISAM不支持；
      5、InnoDB不支持全文检索，MySIAM支持全文检索；
         
-> reubenwang@163.com
+> reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆

@@ -33,6 +33,8 @@ Java面试需要准备的知识点，整理的不是那么全面，后续会一�
  
  - [JVM相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/JVM.md)
  
+ - [计算机网络](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/ComputerNetwork.md)
+ 
  - [Redis相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Redis.md)
  
  - [MySQL数据库](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/MySQL.md)
@@ -48,5 +50,5 @@ Java面试需要准备的知识点，整理的不是那么全面，后续会一�
 
 ### 联系
 
-> reubenwang@163.com
+> reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆
