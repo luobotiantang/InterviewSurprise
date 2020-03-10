@@ -12,7 +12,7 @@
      5、内省
      6、泛型
      7、For-Each循环
-     8、JUC
+     8、JUC(Java.util.concurrent包)
 
  ### JDK1.8新特性
      
