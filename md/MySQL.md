@@ -10,6 +10,8 @@
  
  - [存储引擎](#存储引擎)
  
+ - [查询有2门及以上不及格科目的学生姓名及其平均成绩](#查询有2门及以上不及格科目的学生姓名及其平均成绩)
+ 
  ### JDBC连接数据库的步骤
  
      1、JDBC所需的4个参数(user、password、url、driverClass);
@@ -58,6 +60,11 @@
      3、InnoDB支持外键，MyISAM不支持外键；
      4、InnoDB支持MVCC(多版本并发控制)，MyISAM不支持；
      5、InnoDB不支持全文检索，MySIAM支持全文检索；
-        
+ 
+ ### 查询有2门及以上不及格科目的学生姓名及其平均成绩
+ 
+     select sname,avg(grade) from s,sc
+     where s.s#=sc.s# and grade<60 group by sname having by count(grade)>=2;       
+     
 > reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆
