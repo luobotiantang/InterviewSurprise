@@ -110,9 +110,14 @@
             return singleTon;
         }
      }
+     
  ### ThreadLocal
  
      ThreadLocal是干什么的？其实ThreadLocal就是一个工具类
+     每一个ThreadLocal只保存一个键值对，并且各个线程的数据互不干扰，每个线程都有一个ThreadLocalMap数据结构，当执行set方法时
+     其值是保存当前线程的threadLocals变量中，当执行get方法时是从当前线程的threadLocals中取，所以各个线程的数据互不干扰。
+     简单的说ThreadLocal就是一种以空间换时间的做法，在每个Thread里面维护了一个以开地址法实现的ThreadLocal.ThreadLocalMap
+     把数据进行隔离。
         1、隔离数据值
         2、保证每个变量都可以修改各自变量的副本
      ThreadLocalMap<ThreadLocal,Object>的弱引用问题？
@@ -120,5 +125,6 @@
         解决：
             1、使用完线程共享变量之后，调用ThreadLocal.remove()方法清除线程共享变量。
             2、JDK建议将ThreadLocal设置成private static类型，这样ThreadLocal的弱引用问题就不存在了。
+     
 > reubenwang@163.com
 > 没事别找我，找我也不在！--我很忙🦆
