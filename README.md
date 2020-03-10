@@ -29,25 +29,25 @@ Java面试需要准备的知识点，整理的不是那么全面，后续会一�
 
  - [Java基础](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/JavaFoundation.md)
  
- - [线程相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Thread.md)
+ - [线程](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Thread.md)
  
- - [JVM相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/JVM.md)
+ - [JVM](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/JVM.md)
  
- - [JDK相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/JDK.md)
+ - [JDK](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/JDK.md)
  
  - [计算机网络](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/ComputerNetwork.md)
  
- - [Redis相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Redis.md)
+ - [Redis](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Redis.md)
  
  - [MySQL数据库](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/MySQL.md)
  
- - [MyBatis相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/MyBatis.md)
+ - [MyBatis](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/MyBatis.md)
  
- - [Hibernate相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Hibernate.md)
+ - [Hibernate](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Hibernate.md)
 
- - [Spring相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Spring.md)
+ - [Spring](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Spring.md)
  
- - [SpringBoot相关](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/SpringBoot.md)
+ - [SpringBoot](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/SpringBoot.md)
 
 
 ### 联系
