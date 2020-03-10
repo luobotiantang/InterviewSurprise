@@ -2,6 +2,7 @@
 
  - [SpringBoot的启动方式](#SpringBoot的启动方式)
  
+ - [SpringBoot如何不用默认的tomcat](#SpringBoot如何不用默认的tomcat)
  
  ### SpringBoot的启动方式
      1、IDEA运行application这个类的main方法 SpringApplication.run(MySpringApplication.class,args)        
@@ -12,6 +13,9 @@
         cd target
         java -jar myspringboot-0.0.1-SNAPSHOT.jar
 
+ ### SpringBoot如何不用默认的tomcat
+    
+     修改依赖，修改ApplicationContext的启动方法
 
 > reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆
