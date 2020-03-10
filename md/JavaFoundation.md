@@ -18,6 +18,8 @@
  
  - [ThreadLocal](#ThreadLocal)
  
+ - [Integer与int的区别](#Integer与int的区别)
+ 
  ### java关键字作用域
  
      注：(1：支持；0：不支持)
@@ -125,6 +127,12 @@
         解决：
             1、使用完线程共享变量之后，调用ThreadLocal.remove()方法清除线程共享变量。
             2、JDK建议将ThreadLocal设置成private static类型，这样ThreadLocal的弱引用问题就不存在了。
-     
+ 
+ ### Integer与int的区别
+     这个题面试会问接口传参的问题，用Integer因为可以判断是否空传的情况；还有就是整型字面量范围[-128~127]
+     1、Integer是int提供的封装类，int是java的基本数据类型；
+     2、Integer的默认值是null而int的默认值是0；
+     3、声明为Integer的变量需要实例化，而声明int的变量不需要实例化；
+        
 > reubenwang@163.com
 > 没事别找我，找我也不在！--我很忙🦆
