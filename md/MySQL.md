@@ -12,6 +12,8 @@
  
  - [查询有2门及以上不及格科目的学生姓名及其平均成绩](#查询有2门及以上不及格科目的学生姓名及其平均成绩)
  
+ - [SQL语句如何查询评论表里每个人的最新一条评论信息](#SQL语句如何查询评论表里每个人的最新一条评论信息)
+ 
  ### JDBC连接数据库的步骤
  
      1、JDBC所需的4个参数(user、password、url、driverClass);
@@ -64,7 +66,13 @@
  ### 查询有2门及以上不及格科目的学生姓名及其平均成绩
  
      select s.sname,avg(sc.grade) from s,sc
-     where s.s#=sc.s# and sc.grade<60 group by s.sname having by count(sc.grade)>=2;       
+     where s.s#=sc.s# and sc.grade<60 group by s.sname having by count(sc.grade)>=2; 
+     
+ ### SQL语句如何查询评论表里每个人的最新一条评论信息
+     
+     select * from test group by f,t order by time desc limit 1;
+     
+           
      
 > reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆
