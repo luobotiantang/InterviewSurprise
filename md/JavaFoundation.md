@@ -118,7 +118,7 @@
      ThreadLocalMap<ThreadLocal,Object>的弱引用问题？
         ThreadLocalMap<null,Object>的键值对为空的情况，会导致内存溢出(ThreadLocal被回收，ThreadLocal关联的共享变量还在)。
         解决：
-            1、使用完线程共享变量之后，调用ThreadLocalMap.remove()方法清除线程共享变量。
+            1、使用完线程共享变量之后，调用ThreadLocal.remove()方法清除线程共享变量。
             2、JDK建议将ThreadLocal设置成private static类型，这样ThreadLocal的弱引用问题就不存在了。
 > reubenwang@163.com
 > 没事别找我，找我也不在！--我很忙🦆
