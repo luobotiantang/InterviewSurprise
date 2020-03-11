@@ -1,5 +1,7 @@
 package com.wh.com;
 
+import java.util.List;
+
 /**
  * @description:
  * @author: WangHu
@@ -22,6 +24,7 @@ public class DemoClass extends ParentClass{
     public DemoClass(){
         super(34);
         System.out.println("In DemoClass Constructor");
+
     }
 
     public void printStatement(){
