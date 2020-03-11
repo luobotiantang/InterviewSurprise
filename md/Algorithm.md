@@ -10,6 +10,10 @@
  
  - [冒泡排序](#冒泡排序)
  
+ - [二分法查找](#二分法查找)
+ 
+ - [二叉树(先序、中序、后序遍历)](#二叉树(先序、中序、后序遍历))
+ 
  
  
  
@@ -135,10 +139,89 @@
                 System.out.println(arr[i]);
             }
          }
-       
+ ### 二分法查找
      
+     public static int binarySearch(int[] arr,int m,int l,int r){
+        //先判断m是否在数组中及数组是否满足要求
+        if(m<arr[l] || m>arr[r] || arr[l]<arr[r]){
+            return -1;
+        }
+        //找中间值
+        int mIndex = (l+r)/2;
+        int mValue = arr[mIndex];
+        if(mValue==m){
+            return mValue;
+        }else if(mValue>m){
+            return binarySearch(arr,m,l,mIndex);
+        }else{
+            return binarySearch(arr,m,mIndex,arr.length);
+        }
+     }     
+  
+ ### 二叉树(先序、中序、后序遍历)   
      
+     //先定义一颗二叉树
+     public class TreeNode{
+        public int val;
+        public TreeNode left;
+        public TreeNode right;
+        public TreeNode(int val){
+            this.val = val;
+        }
+     }
      
+     先序遍历:(根节点-->左子树-->右子树)
+     
+        递归实现:
+            public void preOrderTree(TreeNode node){
+                if(node==null){
+                    return;
+                }
+                System.out.println(node.val);
+                preOrderTree(node.left);
+                preOrderTree(node.right);
+            }
+        非递归实现:
+            public ArrayList<Integer> preOrderTree(TreeNode node){
+                ArrayList<Integer> list = new ArrayList<>();
+                Stack<TreeNode> stack = new Stack<>();
+                if(node==null){
+                    return list;
+                }
+                stack.push(node);
+                while(!stack.isEmpty()){
+                    TreeNode temp = stack.pop();
+                    if(temp!=null){
+                        list.add(temp.val);
+                        stack.push(node.right);
+                        stack.push(node.left);
+                    }
+                }
+            
+            }
+     
+     中序遍历:(左子树-->根节点-->右子树)
+        
+        public static void inOrderTree(TreeNode node){
+            if(node==null){
+                return;
+            }
+            inOrderTree(node.left);
+            System.out.println(node.val);
+            inOrderTree(node.right);
+        
+        }
+     
+     后序遍历:(左子树-->右子树-->根节点)
+        
+        public static void postOrderTree(TreeNode node){
+            if(node==null){
+                return;
+            }
+            postOrderTree(node.left);
+            System.out.println(node.val);
+            postOrderTree(node.right);
+        }
      
      
      

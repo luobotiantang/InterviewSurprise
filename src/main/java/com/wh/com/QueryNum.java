@@ -1,5 +1,7 @@
 package com.wh.com;
 
+import java.util.LinkedList;
+
 /**
  * @description: 从1000w中取出最小的10个数按照顺序打印出来
  * @author: WangHu
@@ -17,6 +19,12 @@ public class QueryNum {
         print(arr,n);
         for (int i = 0; i <m ; i++) {
             System.out.println(arr[i]);
+        }
+
+        LinkedList<Object> objectLinkedList = new LinkedList<>();
+        for (Object o:objectLinkedList
+             ) {
+            objectLinkedList.add(0,o);
         }
     }
 
