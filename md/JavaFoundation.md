@@ -20,6 +20,9 @@
  
  - [Integer与int的区别](#Integer与int的区别)
  
+ - [Object的equals方法具体实现](#Object的equals方法具体实现)
+ 
+ 
  ### java关键字作用域
  
      注：(1：支持；0：不支持)
@@ -133,6 +136,13 @@
      1、Integer是int提供的封装类，int是java的基本数据类型；
      2、Integer的默认值是null而int的默认值是0；
      3、声明为Integer的变量需要实例化，而声明int的变量不需要实例化；
-        
+  
+ ### Object的equals方法具体实现
+ 
+     public boolean equals(Object obj){
+        return (this == obj);
+     }
+     就是比较当前对象和对比的对象的内存地址是否相等及是否在同一内存区域。 
+          
 > reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆
