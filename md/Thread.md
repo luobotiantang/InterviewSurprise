@@ -38,19 +38,21 @@
                                    BlockingQueue<Runnable> woekQueue,
                                    ThreadFactory threadFactory,
                                    RejectExecutorHandler handler)
-     1、corePoolSize:核心线程池数，顺带说一下核心线程池设置太大会浪费资源，但是设置太小又会带来频繁创建线程导致的性能问题，这个需要考虑。
-     2、maximumPoolSize:最大线程池数，当处理请求的任务数超过核心线程数的时候，其他任务就会进入blockingQueue阻塞队列中，阻塞队列分有界和无界，
-                        1、无缓存队列(SynchrousQueue),如果任务数大于核心线程池数，那么剩余的任务就会重新起线程执行，当运行的线程数大于最大
-                           线程池数的时候，其余任务直接拒绝。
-                        2、有界队列(ArrayBlockingQueue)如果任务数大于核心线程池数并且剩余的任务数大于有界队列，那么就会重新新起线程，当任务
-                           超过最大线程池数的时候就会走拒绝策略。
-                        3、无界队列(LinkedBlockingQueue)，如果任务数大于核心线程池数那么此时多余的任务就会放到阻塞队列中，此时不会重新新起
-                           线程最大线程池数不起作用。
-                           核心线程池数(corePoolSize)与最大线程池数(maximumPoolSize)相等的时候此时就会创建固定个数的线程池，但是必须满足
-                           maximumPoolSize>0。
-     3、keepAliveTime:限制线程存活时间，当线程池的个数大于核心线程池个数(maximumPoolSize)且线程存活时间大于keepAliveTime的值的时候线程销毁
-                      直到线程池个数大于核心线程池个数为止，核心线程池个数也可以指定销毁，即设置allowThreadTimeOut,当设置之后核心线程也可以
-                      销毁。当创建固定个数的线程池的方式时keepAliveTime=0。
+     1、corePoolSize:核心线程池数，顺带说一下核心线程池设置太大会浪费资源，但是设置太小又会带来频繁创建线程导致的性能问题，
+                     这个需要考虑。
+     2、maximumPoolSize:最大线程池数，当处理请求的任务数超过核心线程数的时候，其他任务就会进入blockingQueue阻塞队列中，
+                        阻塞队列分有界和无界，
+                        1、无缓存队列(SynchrousQueue),如果任务数大于核心线程池数，那么剩余的任务就会重新起线程执行，当运行
+                           的线程数大于最大线程池数的时候，其余任务直接拒绝。
+                        2、有界队列(ArrayBlockingQueue)如果任务数大于核心线程池数并且剩余的任务数大于有界队列，那么就会重
+                           新新起线程，当任务超过最大线程池数的时候就会走拒绝策略。
+                        3、无界队列(LinkedBlockingQueue)，如果任务数大于核心线程池数那么此时多余的任务就会放到阻塞队列中，
+                           此时不会重新新起线程最大线程池数不起作用。
+                           核心线程池数(corePoolSize)与最大线程池数(maximumPoolSize)相等的时候此时就会创建固定个数的线程池，
+                           但是必须满足maximumPoolSize>0。
+     3、keepAliveTime:限制线程存活时间，当线程池的个数大于核心线程池个数(maximumPoolSize)且线程存活时间大于keepAliveTime的值
+                      的时候线程销毁直到线程池个数大于核心线程池个数为止，核心线程池个数也可以指定销毁，即设置allowThreadTimeOut
+                      ,当设置之后核心线程也可以销毁。当创建固定个数的线程池的方式时keepAliveTime=0。
      4、util:线程存活时间单位，通常TimeUnit.SECOND
      5、workQueue:阻塞队列，当请求的任务数大于核心线程池数的时候，会把多余的任务放入阻塞队列。
      6、threadFactory:线程工厂即为相同的一组任务创建指定的线程。
