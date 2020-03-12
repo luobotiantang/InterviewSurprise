@@ -41,8 +41,8 @@
 
  ### 使用redis实现限制前台点击
      
-     前台创建一个uuid+时间戳传给后台，调用redis的自增方法，将key中存储的数字值自增1，如果调用中key不存在，那么先把key进行初始化
-     在调用redis的INCR方法，如果值包含错误的类型或者字符串类型的值不能表示为数字，那么返回一个错误。  
+     前台创建一个uuid+时间戳传给后台，调用redis的自增方法，将key中存储的数字值自增1，如果调用中key不存在，那么先把key进行
+     初始化在调用redis的INCR方法，如果值包含错误的类型或者字符串类型的值不能表示为数字，那么返回一个错误。  
  
  ### redis和memcached的区别
  
@@ -54,14 +54,14 @@
     
      1、文件事件处理器(IO多路复用)  
      2、客户端------>redis的通信
-        A:客户端1(socket01)请求redis的server socket建立连接，server socket接收到AE_READABLE事件，redis进程里的IO多路复用
-          把此socket01的事件放到一个queue队列中，redis通过文件事件分发器进行处理分发给连接回答处理器，由连接回答处理器将socket01
-          的AE_RAADABLE事件与命令请求处理器进行关联。     
+        A:客户端1(socket01)请求redis的server socket建立连接，server socket接收到AE_READABLE事件，redis进程里的IO多
+          路复用把此socket01的事件放到一个queue队列中，redis通过文件事件分发器进行处理分发给连接回答处理器，由连接回答处理
+          器将socket01的AE_RAADABLE事件与命令请求处理器进行关联。     
         B:客户端发起set(KV)操作的流程
-          客户端的1(socket01)请求set(KV)操作与redis的server socket建立连接，server socket接收到AE_READABLE事件，由redis
-          进程里的IO多路复用把socket01的事件放到queue中，此时redis进程里的事件分派器对队列任务里的事件进行分派给命令请求处理器
-          由命令请求处理器把AE_READABLE存储到内存中并将AE_WRITABLE关联命令回复处理器，对socket01的set操作进行返回ok，最后
-          解除AE_READABLE事件与命令请求处理器的关联，并解除AE_WRITABLE事件与命令回复处理器的关联。
+          客户端的1(socket01)请求set(KV)操作与redis的server socket建立连接，server socket接收到AE_READABLE事件，由
+          redis进程里的IO多路复用把socket01的事件放到queue中，此时redis进程里的事件分派器对队列任务里的事件进行分派给命令
+          请求处理器由命令请求处理器把AE_READABLE存储到内存中并将AE_WRITABLE关联命令回复处理器，对socket01的set操作进行
+          返回ok，最后解除AE_READABLE事件与命令请求处理器的关联，并解除AE_WRITABLE事件与命令回复处理器的关联。
      3、非阻塞IO多路复用
         只把事件押入队列中，不处理所以很快
      4、事件处理器
@@ -94,9 +94,9 @@
        故障转移
        配置中心
        1、至少3个实例
-          为什么是至少是3是因为假如以一个master服务A挂掉了，那么此时另外两个slave服务B的哨兵2、服务C的哨兵3就会判定服务A挂掉了
-          ，majority还有1个那么，服务B和服务C就会选举一个来顶替服务A假如是两个实例，如果master挂掉了那么majority就没有了，
-          就不会进行故障转移.
+          为什么是至少是3是因为假如以一个master服务A挂掉了，那么此时另外两个slave服务B的哨兵2、服务C的哨兵3就会判定服务A
+          挂掉了，majority还有1个那么，服务B和服务C就会选举一个来顶替服务A假如是两个实例，如果master挂掉了那么majority
+          就没有了，就不会进行故障转移.
        不可用：master宕机导致缓存就不能用，导致大量数据直接流入数据库从而导致数据库宕机的情况
  
  ### redis主从复制   
@@ -106,8 +106,8 @@
         利用redis主从架构实现-->读写分离架构---->实现可支持水平扩展的搞并发架构
         redis采用异步复制的方式复制数据到slave节点,master采用持久化机制（RDB、AOF）
         复制：
-          slave第一次连接master通过ping的形式那么master将会full resynchronization全量复制，如果slave已经连接过了则采用
-          部分复制的方式。master的快照文件缓存到RDB,批量由RDB缓存到slave内存中
+          slave第一次连接master通过ping的形式那么master将会full resynchronization全量复制，如果slave已经连接过了则
+          采用部分复制的方式。master的快照文件缓存到RDB,批量由RDB缓存到slave内存中
           主从复制的断电续传
             主从复制思路：
               1、slave请求master然后在本地保存master node的host和IP
@@ -117,30 +117,30 @@
               5、每次master接收到更新的数据都异步发送给slave node
               A、master和slave会维护一个offset记录累加位置
               B、backlog
-                  master node有一个backlog默认大小1M,master node给slave node复制数据时也会将数据在backlog中同步写一份，
-                  backlog主要用来作为全量复制中的增量复制的
+                  master node有一个backlog默认大小1M,master node给slave node复制数据时也会将数据在backlog中同步写
+                  一份，backlog主要用来作为全量复制中的增量复制的
               C、run id:保证唯一
       主从复制导致的数据丢失问题
-      问题描述：客户端请求master写入一条数据，之后master相应给客户端说已经ok,此时master正在往slave进行异步主从复制数据，这个
-               时候突然master宕机了，导致数据还没同步完slave导致的问题
+      问题描述：客户端请求master写入一条数据，之后master相应给客户端说已经ok,此时master正在往slave进行异步主从复制数据，
+               这个时候突然master宕机了，导致数据还没同步完slave导致的问题
  
  ### 集群脑裂导致数据丢失的问题
     
      问题描述：master node       slave node----------sentinal cluster
-            由于网络的问题master主节点内出现了异常性的有相同数据，相同工作的两个节点(就是sentinal cluster和slave node节点
-            能够正常连接通信，master node主节点和【slave node、sentinal node】都失去了连接，导致sentinal node以为
-            master node节点已经挂了，但是实际上master node节点并没有挂，此时sentinal node又重新选取一个slave node为主节点，
-            导致此时有两个主节点)
-            脑裂就会导致数据丢失的问题：假如client还和之前的master node节点进行通信导致数据存储在这个master node节点上，那么
-                                    如果网络恢复了，就会导致新的master node往此旧的master node节点进行同步数据，此时旧的
-                                    master node节点上的数据就会丢失。
+            由于网络的问题master主节点内出现了异常性的有相同数据，相同工作的两个节点(就是sentinal cluster和slave node
+            节点能够正常连接通信，master node主节点和【slave node、sentinal node】都失去了连接，导致sentinal node以
+            为master node节点已经挂了，但是实际上master node节点并没有挂，此时sentinal node又重新选取一个slave node
+            为主节点，导致此时有两个主节点)
+            脑裂就会导致数据丢失的问题：假如client还和之前的master node节点进行通信导致数据存储在这个master node节点上，
+            那么如果网络恢复了，就会导致新的master node往此旧的master node节点进行同步数据，此时旧的master node节点上
+            的数据就会丢失。
      
      解决脑裂主从复制及脑裂的问题：
          设置:
              min-slaves-to-write 1
              min-slaves-max-lag 10
-             此设置在redis配置文件中，设置过之后假如master node及主节点发现向slave node节点同步数据的时候延迟大于10秒，那么
-             master node就拒绝接收客户端的请求，起到降级的作用，避免数据大量丢失。
+             此设置在redis配置文件中，设置过之后假如master node及主节点发现向slave node节点同步数据的时候延迟大于10秒，
+             那么master node就拒绝接收客户端的请求，起到降级的作用，避免数据大量丢失。
 
  
  
