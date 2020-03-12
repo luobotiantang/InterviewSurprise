@@ -16,6 +16,18 @@
  
  - [佩波那契数列](#佩波那契数列)
  
+ - [判断字符串中包含完整的()子串的最大长度](#判断字符串中包含完整的()子串的最大长度)
+ 
+ - [判断两个二叉树是否相等](#判断两个二叉树是否相等)
+ 
+ - [字符串转float](#字符串转float)
+ 
+ - [用sql查询出所有非叶子节点](#用sql查询出所有非叶子节点)
+ 
+ - [LRU算法](#LRU算法)
+ 
+ 
+ 
  
  
  
@@ -256,10 +268,72 @@
                 return end;
             }
         }
+ 
+ ### 判断字符串中包含完整的()子串的最大长度    
+    
+     String string = "()()()()()(())()((()))";
+     //将字符串转化成数组
+     char[] ch = string.toCharArray();
+     StringBuffer strB = new StringBuffer();
+     ...
      
+ ### 判断两个二叉树是否相等
      
+ ### 字符串转float     
      
+ ### 用sql查询出所有非叶子节点
      
+     CREATE TABLE `node` (
+         `id` BIGINT PRIMARY KEY AUTO_INCREMENT,
+         `name` VARCHAR(32) NOT NULL,
+         `pid` BIGINT NULL COMMENT '父节点ID'
+     ); 
+     请用sql查询出所有非叶子节点
+     select id,name,pid from table where id not in (select distinct pid from table);
+       
+ ### LRU算法
+     
+     public class LRUCache<K,V> extends LinkedHashMap<K,V>{
+        private final int CACHE_SIZE;
+        
+        public LRUCache(int cacheSize){
+            //这块就是设置一个hashMap的初始值大小，同时最后一个true指的是让LinkedHashMap按照访问顺序进行排序，最近
+            //访问的放在头，最老访问的就在尾
+            super((int)Math.ceil(cacheSize/0.75)+1,0.75f,true);
+            CACHE_SIZE=cacheSize;
+        }
+        @Override
+        protected boolean removeEldestEntry(Map.Entry eldest) {
+            return size() > CACHE_SIZE; // 这个意思就是说当map中的数据量大于指定的缓存个数的时候，就自动删除最老的数据
+        }
+        
+     }    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
      
      
      
