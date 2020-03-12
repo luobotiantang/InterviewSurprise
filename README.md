@@ -23,7 +23,21 @@ Java面试需要准备的知识点，整理的不是那么全面，后续会一�
        
     2、面试的时候尽量保持自然，别紧张😓把面试官问的问题说清楚，回答到点子上别拐弯磨脚东扯西扯。不然即使扯了一大堆即使解释明白了面
        试官也会对你留下不好的印象。
+       
+### 面试公司
+
+    2020-03-12 16:00 掌上先机二面
+    2020-03-12 17:00 BOSS直聘
     
+    2020-03-13 10:00 爱奇艺
+    2020-03-13 14:00 51CTO
+    
+    2020-03-16 14:00 泰康在线
+    2020-03-16 15:00 傲林科技
+    2020-03-16 18:00 猎聘网
+    
+    2020-03-18 11:00 埃摩森
+    2020-03-18 14:00 北京领创智信科技有限公司
 
 ### 面试准备点
 
@@ -54,6 +68,8 @@ Java面试需要准备的知识点，整理的不是那么全面，后续会一�
  - [SpringBoot](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/SpringBoot.md)
  
  - [Git](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Git.md)
+ 
+ - [Linux](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Linux.md)
 
 
 ### 联系
