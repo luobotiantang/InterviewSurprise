@@ -28,6 +28,10 @@
  
  - [QPS](#QPS)
  
+ - [Synchronized与Lock的区别及应用](#Synchronized与Lock的区别及应用)
+ 
+ - [volatile关键字](#volatile关键字)
+ 
  ### java关键字作用域
  
      注：(1：支持；0：不支持)
@@ -201,8 +205,18 @@
      (3000000 *0.8)/(86400*0.2)=139(QPS)
      一般要达到139QPS，因为是峰值
         
-        
+ ### Synchronized与Lock的区别及应用
+     Synchronized:
+        Synchronized应用悲观锁，Synchronized底层是monitor监视器，JVM是通过monitor.enter、monitor.exit(进入、退出)
+        对象监视器对方法和代码块的同步的。编译之后会在同步代码块之前执行monitor.enter指令，调用代码块之后执行monitor.exit
+        指令，没有获取到锁的线程会阻塞到方法的入口处，直到获取锁的线程monitor.exit之后其他才可以继续执行。
+            
+ ### volatile关键字
      
+     可见性、顺序性
+     注:不能保证原子性
+     
+        
         
    
    
