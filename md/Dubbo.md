@@ -10,6 +10,12 @@
  
  - [Dubbo负载均衡策略](#Dubbo负载均衡策略)
  
+ - [集群容错策略](#集群容错策略)
+ 
+ - [Dubbo动态代理策略](#Dubbo动态代理策略)
+ 
+ - [SPI](#SPI)
+ 
  
  
  ### SpringCloud与Dubbo的区别
@@ -64,5 +70,28 @@
      consistanthash loadbalance:一致性hash策略
                                 相同参数的请求一定会分发到同一个provider上，provider挂掉的情况会基于虚拟节点均匀分配
                                 剩余的流量，抖动不是很大，如果业务要求一类请求都打到同一个provider那么就用一致性hash策略。
+                                
+ ### 集群容错策略
+     
+     failover cluster模式：失败自动切换，默认模式，如果服务宕了，那么请求多次之后感知到服务宕了就会把请求打到其他服务上去。
+     failfast cluster模式：一次调用失败就立即失败，写操作
+     failsafe cluster模式：出现异常时忽略掉，用于日志记录
+     failback cluster模式：失败后后台记录并定时重发
+     forking cluster模式：并行调用多个provider只要有一个成功就返回
+     broadcast cluster模式：逐个调用provider只要又一个成功就返回    
+ 
+ ### Dubbo动态代理策略
+ 
+     默认使用javasist动态字节码生成，创建代理类，但是可以通过spi扩展机制配置自己的动态代理策略。   
+     
+ ### SPI
+     
+     service provider interface服务提供接口
+     就是一个接口有多个实现，通过配置可以制定某个实现
+     一般用于插件扩展
+     经典的如jdbc,jdk提供了好多连接jdbc接口但是没有提供相应实现，都是通过引jar包实现连接不同的数据库。
+     原理：自己写个项目并按照dubbo的配置SPI的要求进行写对应的接口，然后在文件中配置对应的key及实现类的目录值，然后在provider
+          项目中把打好的jar依赖进来，然后配置xml使其指向对应的key，当启动provider的时候就会加载自己的实现类。 
+                                
 > reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆
