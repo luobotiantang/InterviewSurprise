@@ -55,6 +55,8 @@ Java面试需要准备的知识点，整理的不是那么全面，后续会一�
  
  - [Redis](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Redis.md)
  
+ - [MQ](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/MQ.md)
+ 
  - [MySQL数据库](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/MySQL.md)
  
  - [MyBatis](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/MyBatis.md)
@@ -70,6 +72,7 @@ Java面试需要准备的知识点，整理的不是那么全面，后续会一�
  - [Git](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Git.md)
  
  - [Linux](https://github.com/luobotiantang/InterviewSurprise/blob/master/md/Linux.md)
+
 
 
 ### 联系
