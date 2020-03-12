@@ -20,6 +20,10 @@
  
  - [集群脑裂导致数据丢失的问题](#集群脑裂导致数据丢失的问题)
  
+ - [宕机](#宕机)
+ 
+ - [redis集群模式](#redis集群模式)
+ 
  
  
  
@@ -152,8 +156,36 @@
              min-slaves-max-lag 10
              此设置在redis配置文件中，设置过之后假如master node及主节点发现向slave node节点同步数据的时候延迟大于10秒，
              那么master node就拒绝接收客户端的请求，起到降级的作用，避免数据大量丢失。
-
  
+ ### 宕机
+    
+      1、sdown主观宕机，及一个哨兵节点认为master node宕了
+      2、odown客观宕机，及多个哨兵节点认为master node宕了
+         sdown---->odown及主观宕机向客观宕机转换，通过配置quorum的参数值，如果quorum个哨兵认为master node节点宕了那么
+         就会转换客观宕机
+ 
+ ### redis集群模式
+     
+                     client
+                       |
+                       |
+                      master(写)------(从master复制到slave)------slave(读)
+                       |
+                       |
+                      sentinal cluster
+                      缺点：单master承载数据量有限
+                  通过redis-cluster（多master+读写分离+高可用）
+                      master(写)------(从master复制到slave)------slave(读)
+                       |
+                       |
+                       |
+                      master(写)------(从master复制到slave)------slave(读)
+                       |
+                       |
+                      sentinal cluster
+                  redis cluster  VS  replication(读写分离)+sentinal(哨兵)
+                      replication+sentinal适合数据量比较少
+                      redis cluster适合海量数据、高并发、高可用             
  
  
  
