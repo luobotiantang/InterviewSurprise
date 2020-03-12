@@ -2,11 +2,13 @@
 
  - [数据类型](#数据类型)
  
+ - [Redis三大利器](#Redis三大利器)
+ 
  - [Redis持久化方式](#Redis持久化方式)
  
  - [使用redis实现限制前台点击](#使用redis实现限制前台点击)
  
- - [redis和memcached的区别](#redis和memcached的区别)
+ - [Redis和Memcached的区别](#Redis和Memcached的区别)
  
  - [redis单线程模型](#redis单线程模型)
  
@@ -48,7 +50,11 @@
      set     最大存储2^32-1,自动去重
      list    最大存储2^32-1,文章评论列表、粉丝，通过lrange实现分页
      zset    最大存储2^32-1,排序去重,可以通过zrevrange key 0 3查询前三名，zbank key返回排名
- 
+     
+ ### Redis三大利器
+     
+     缓存、降级、限流
+     
  ### Redis持久化方式
   
      因为假如redis宕机了那么redis缓存到内存中的数据如果不进行持久化，那么就会导致数据完全丢失，如果把数据进行持久化那么即
@@ -70,11 +76,15 @@
      前台创建一个uuid+时间戳传给后台，调用redis的自增方法，将key中存储的数字值自增1，如果调用中key不存在，那么先把key进行
      初始化在调用redis的INCR方法，如果值包含错误的类型或者字符串类型的值不能表示为数字，那么返回一个错误。  
  
- ### redis和memcached的区别
  
-     1、redis是单线程的(避免多线程的轮询切换，非阻塞IO多路复用+纯内存事件处理器)，memcached是多线程的。
-     2、redis数据结构和操作要比memcached要多，支持更多的复杂场景。
-     3、redis目前官方支持redis cluster集群模式，memcached没有原生的集群模式，需要依赖客户端往集群分片中写入数据。 
+ ### Redis和Memcached的区别
+ 
+     1、redis是单线程的(避免多线程的轮询切换，非阻塞IO多路复用+纯内存事件处理器)，memcached是多线程非阻塞IO复用的网络模型。
+     2、redis支持更丰富的数据类型（支持更复杂的应用场景）：Redis不仅仅支持简单的k/v类型的数据，同时还提供list，set，zset，
+        hash等数据结构的存储。memcache支持简单的数据类型，String，支持更多的复杂场景。
+     3、Redis支持数据的持久化，可以将内存中的数据保持在磁盘中，重启的时候可以再次加载进行使用,而Memecache把数据全部存在内存
+        之中。
+     4、redis目前官方支持redis cluster集群模式，memcached没有原生的集群模式，需要依赖客户端往集群分片中写入数据。 
      
  ### redis单线程模型
     
