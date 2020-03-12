@@ -30,7 +30,7 @@
  
  - [Synchronized与Lock的区别及应用](#Synchronized与Lock的区别及应用)
  
- - [volatile关键字](#volatile关键字)
+ - [Volatile关键字](#Volatile关键字)
  
  ### java关键字作用域
  
@@ -211,7 +211,7 @@
         对象监视器对方法和代码块的同步的。编译之后会在同步代码块之前执行monitor.enter指令，调用代码块之后执行monitor.exit
         指令，没有获取到锁的线程会阻塞到方法的入口处，直到获取锁的线程monitor.exit之后其他才可以继续执行。
             
- ### volatile关键字
+ ### Volatile关键字
      
      可见性、顺序性
      注:不能保证原子性

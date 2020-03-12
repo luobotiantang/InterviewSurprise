@@ -14,6 +14,8 @@
  
  - [SQL语句如何查询评论表里每个人的最新一条评论信息](#SQL语句如何查询评论表里每个人的最新一条评论信息)
  
+ - [三个join的含义](#三个join的含义)
+ 
  ### JDBC连接数据库的步骤
  
      1、JDBC所需的4个参数(user、password、url、driverClass);
@@ -83,7 +85,11 @@
      
      select * from test group by f,t order by time desc limit 1;
      
-           
+ ### 三个join的含义
+ 
+     left join(左连接):返回左表中的所有记录以及和右表中的连接字段相等的记录。
+     right join(右连接):返回右表中所有记录以及和左表中连接字段相等的记录。
+     inner join(等值连接):只返回两个表中连接字段相等的记录。         
      
 > reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆
