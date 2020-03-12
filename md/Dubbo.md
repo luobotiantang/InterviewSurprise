@@ -2,6 +2,14 @@
 
  - [SpringCloud与Dubbo的区别](#SpringCloud与Dubbo的区别)
  
+ - [DUBBO的工作原理](#DUBBO的工作原理)
+ 
+ - [注册中心挂掉的情况下还会通信吗](#注册中心挂掉的情况下还会通信吗)
+ 
+ - [Dubbo协议](#Dubbo协议)
+ 
+ - [Dubbo负载均衡策略](#Dubbo负载均衡策略)
+ 
  
  
  ### SpringCloud与Dubbo的区别
@@ -12,7 +20,49 @@
      断路器:Dubbo(不完善)、SpringCloud(Spring Cloud Netflix Hystrix)
      分布式配置:Dubbo(无)、SpringCloud(Spring Cloud Config)
      
+ ### DUBBO的工作原理
      
+     1、service接口层（provider和consumer）
+     2、config层进行配置文件配置
+     3、proxy层：代理层无论consumer还是provider，double都会提供代理，代理之间进行网络通信
+     4、registry层：provider注册自己作为一个服务，consumer就可以找注册中心去寻找自己要调用的服务。
+     5、cluster层：provider可以部署到多台机器上的，多个provider就可以组成一个集群
+     6、monitor层：consumer调用provider调用了多少次啊？统计监控调用次数
+     7、protocol层：负责具体的provider和consumer之间调用接口的时候的网络通信
+     8、exchange层：信息交换层，主要做信息交换
+     9、serialize层：序列化层
+     大致说一下：A服务为服务提供方
+               服务提供方起来之后会向注册中心注册服务信息，注册中心就会知道A服务部署了几台并且并记录IP信息，consumer
+               服务消费方向注册中心发送请求看是否有A服务，如果有A服务那么都部署在哪台机器上，consumer和provider通过
+               proxy代理层进行通信，如果A服务有多台那么dubbo就通过cluster实现负载均衡，使consumer服务消费方的请求
+               均匀的分布到A服务及provider的不同机器上。然后通过monitor监控中心监控consumer和provider之间的调用次
+               数信息等。
+ 
+ ### 注册中心挂掉的情况下还会通信吗
+     
+     会，因为consumer会缓存一份服务提供方的信息通过代理层进行通信。 
+      
+ ### Dubbo协议
+     
+     dubbo协议:
+        默认dubbo协议，单一长连接NIO异步通信,使用hessian作为序列化协议单一长连接：consumer和provider之间建立一个连接
+        进行通信，不是那种发送个请求建立一个连接用完之后再销毁，而是一直会存在当consumer再次发送数据的时候还是用当前连接
+        。适合高并发的情况，因为不需要建立太多连接，适合consumer的数量远远大于provider的数量。
+     rmi协议：短连接，java序列化
+     hessian协议：短连接
+     http协议：走json协议
+     webservice协议：走SOAP文本序列化
 
+ ### Dubbo负载均衡策略
+     
+     random loadbalance:随机策略
+                        默认策略，按照权重随机分配，权重越大分配流量越高
+     roundrobin loadbalance:轮询策略
+                            轮询的分配到不同的provider上，针对于机器性能也可以调节权重
+     leastactive loadbalance:最少活跃调用策略
+                             根据调用provider的活跃度请求的策略
+     consistanthash loadbalance:一致性hash策略
+                                相同参数的请求一定会分发到同一个provider上，provider挂掉的情况会基于虚拟节点均匀分配
+                                剩余的流量，抖动不是很大，如果业务要求一类请求都打到同一个provider那么就用一致性hash策略。
 > reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆
