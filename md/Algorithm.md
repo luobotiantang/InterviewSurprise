@@ -14,6 +14,8 @@
  
  - [二叉树先序、中序、后序遍历](#二叉树先序中序后序遍历)
  
+ - [佩波那契数列](#佩波那契数列)
+ 
  
  
  
@@ -222,8 +224,38 @@
             System.out.println(node.val);
             postOrderTree(node.right);
         }
+        
+ ### 佩波那契数列
      
-     
+     1、递归实现
+        public static long fibonacci(long l){
+            if(l==0){
+                return 0;
+            }else if(l==1){
+                return 1;
+            }else{
+                return fibonacci(l-1)+fibonacci(l-2);
+            }
+        }   
+        
+     2、非递归实现
+        public static long fibonacci(long l){
+            if(l==0){
+                return 0;
+            }else if(l==1){
+                return 1;
+            }else{
+                long temp1 = 0;
+                long temp2 = 1;
+                long temp3 = 0;
+                for(int i=2;i<=l;i++){
+                    end = temp1+temp2;
+                    temp1 = temp2;
+                    temp2 = end;
+                }
+                return end;
+            }
+        }
      
      
      
