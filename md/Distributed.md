@@ -6,6 +6,10 @@
  
  - [分布式锁](#分布式锁)
  
+ - [分布式session](#分布式session)
+ 
+ = [分布式事务](#分布式事务)
+ 
  ### 分布式系统服务之间的幂等性
  
      浏览器发两次订单支付请求：
@@ -47,5 +51,38 @@
      对比：
         redis锁依赖与集群，每个一段时间尝试获取锁造成性能开销
         zookeeper是通过消息监听的方式，相对redis分布式锁要好
+        
+ ### 分布式session
+ 
+     1、tomcat+redis
+        在tomcat配置文件中配置RedisSessionHandlerValue、RedisSessionManager(host、port)也可以基于哨兵
+        tomcat将数据放入redis中，其他tomcat服务服务从redis中读取到session中。
+        问题：严重依赖web容器，重耦合
+     2、spring session +redis
+        不依赖于web容器，直接从spring session拿取数据到redis然后再通过redis获取session数据
+ 
+ ### 分布式事务
+ 
+     1、两阶段提交方案/XA方案
+             事务管理器
+                 1、询问
+                 2、执行
+             一个系统跨多个库
+             spring+JTA
+     2、TCC方案
+             Try
+             Confirm
+             Cancel
+             和业务耦合相关比较大，和钱打交道的用TCC,要么全部成功要么回滚。
+     3、本地消息表
+             国外ebay,大量依赖mysql的消息表
+     4、可靠消息最终一致性方案
+             结合阿里的RocketMQ支持分布式事务
+             A系统已经入库操作此时发送confirm消息给MQ,MQ就会通知B系统消费这条消息去执行，如果B系统执行过程中
+             失败了，那么就会失败重试或者，基于Zookeeper的分布式协调机制，zookeeper去通知A系统再此重发一条消
+             息那么B系统怎么保证幂等性，可以在redis中记录一条表示，如果有表示说明已经处理过某个消息。
+     5、最大努力通知方案
+             系统A-----MQ------最大努力通知服务(失败重试)-----系统B
+     实际上：做监控、日志、接口判断，因为分布式事务会导致代码很复杂、性能及吞吐量大幅度降级      
 > reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆
