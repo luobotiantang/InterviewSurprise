@@ -112,7 +112,7 @@
 
  ### 单例模式
  
-     双重检查所的懒加载机制
+     双重检查锁的懒加载机制
      public class SingleTon{
         private static volitale SingleTon singleTon;
         public void SingleTon(){}
@@ -273,6 +273,8 @@
      HashMap通过hashcode对其内容进行快速查找，而 TreeMap中所有的元素都保持着某种固定的顺序，如果你需要得到一个
      有序的结果你就应该使用TreeMap。HashMap通常比TreeMap效率要高一些，一个是哈希表，一个是二叉树，建议多使用
      HashMap，在需要排序的Map时候才用TreeMap。 
+     
+ 
      
    
    

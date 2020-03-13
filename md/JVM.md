@@ -33,10 +33,22 @@
      Serial:单线程版
      ParNew:Serial的多线程版
      CMS:采用标记-清除算法(会产生大量碎片)
+         Concurrent Mark Sweep Collector是回收停顿时间比较短，目前比较常用的垃圾回收器。
+         步骤：
+            1、初始标记(Initial Mark)
+            2、并发标记(Concurrent Mark)
+            3、重新标记(Remark)
+            4、并发清除(Concurrent Sweep)
+         第1、3步的初始标记和重新标记阶段会引发STW，而第2、4步的并发标记及并发清除两个阶段和应用程序
+         并发执行，也是比较耗时的操作，但并不影响应用程序的正常执行。由于CMS采用的是"标记-清除算法"，
+         因此产生大量的空间碎片。为了解决这个问题，CMS通过配置-XX:+UseCMSCompactAtFullCollection
+         参数，强制JVM在FGC完成后对老年代进行压缩，执行一次空间碎片整理，但是空间碎片整理阶段也会引发
+         STW。为了减少STW次数，CMS还可以通过配置-XX:+CMSFullGCsBeforeCompaction=n参数，在执行了
+         n次FGC后，JVM再在老年代执行空间碎片整理。
+            
      G1:分代回收算法(新生代采用复制算法；老年代采用标记清除算法)
  
  ### GC Roots    
-     
      可达性分析法
      可作为GC Roots的对象包括下面几种：
      1、虚拟机栈(栈针中的本地变量表)中引用的对象
