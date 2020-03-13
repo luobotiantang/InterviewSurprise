@@ -38,6 +38,8 @@
  
  - [内部类对象实例化](内部类对象实例化)
  
+ - [TreeMap](#TreeMap)
+ 
  ### java关键字作用域
  
      注：(1：支持；0：不支持)
@@ -264,7 +266,14 @@
              A.B bb = aa.new B();
          }
      }       
-   
+ 
+ ### TreeMap
+    
+     为什么会出现TreeMap,因为TreeMap的存储结构是平衡二叉树，也称为红黑树。
+     HashMap通过hashcode对其内容进行快速查找，而 TreeMap中所有的元素都保持着某种固定的顺序，如果你需要得到一个
+     有序的结果你就应该使用TreeMap。HashMap通常比TreeMap效率要高一些，一个是哈希表，一个是二叉树，建议多使用
+     HashMap，在需要排序的Map时候才用TreeMap。 
+     
    
    
    
