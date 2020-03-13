@@ -34,6 +34,8 @@
  
  - [redis并发竞争及解决方案](#redis并发竞争及解决方案)
  
+ - [redis分布式锁](#redis分布式锁)
+ 
  - [生产环境的redis是怎么部署的](#生产环境的redis是怎么部署的)
  
  
@@ -284,6 +286,21 @@
      现实场景：set test_key v1-->v3-->v4--v2
      解决：分布式锁（zookeeper）---加时间戳
  
+ ### redis分布式锁
+ 
+     1、普通实现：
+          set orderId:1:lock 随机值 NX PX 30000
+          释放锁通过lua脚本会判断一下orderId:1:lock及key的随机值，如果随机值不一致则不能删除
+          问题：
+             单机的话挂了就完了。
+             主备也会存在分布式锁失败的问题（当master宕了还没来得及切换到slave就会导致事务不一致问题）
+     2、RedLock算法
+          redis cluster集群模式
+          多个master分别获取锁，大多数node节点获取锁的时候才能针对某一个进行加锁，保证了即使宕机也会保证数据的一致性。
+     对比：
+         redis锁依赖与集群，每个一段时间尝试获取锁造成性能开销
+         zookeeper是通过消息监听的方式，相对redis分布式锁要好
+              
  ### 生产环境的redis是怎么部署的
     
      redis cluster
