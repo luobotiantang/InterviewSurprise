@@ -10,6 +10,8 @@
  
  - [运行时数据区](#运行时数据区)
  
+ - [JDK1.8为什么废弃永久代](#JDK1.8为什么废弃永久代)
+ 
  
  ### 类加载机制的生命周期
  
@@ -51,5 +53,18 @@
      5、方法区(线程共享，存储被虚拟机加载的类信息、常量、静态变量、即时编译器编译后的代码等数据)
      6、运行时常量池(用于存放编译期生成的各种字面量和符号引用)
      7、直接内存    
+     
+ ### JDK1.8为什么废弃永久代
+     
+     官方回答：This is part of the JRockit and Hotspot convergence effort. JRockit 
+              customers do not need to configure the permanent generation (since JRockit
+              does not have a permanent generation) and are accustomed to not configuring
+              the permanent generation.
+        
+     移除永久代是为融合HotSpot JVM与 JRockit VM而做出的努力，因为JRockit没有永久代，不需要配置永久代。
+     现实使用中易出问题:
+        由于永久代内存经常不够用或发生内存泄露，爆出异常java.lang.OutOfMemoryError: PermGen
+        
+
 > reubenwang@foxmail.com
 > 没事别找我，找我也不在！--我很忙🦆
