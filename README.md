@@ -25,7 +25,7 @@ Java面试需要准备的知识点，整理的不是那么全面，后续会一�
        试官也会对你留下不好的印象。
     
 ### 脑图
- - [脑图整理](https://www.processon.com/view/link/5e762505e4b011fccea6202a)    
+ - [脑图整理](https://www.processon.com/view/link/5e8b45f6e4b0bf3ebcfbd156)    
 
 ### 面试准备点
 
